@@ -6,10 +6,10 @@
 
 //slave address for devices
 
-#define STLM75 							0x90 				// Digital temperature sensor
+#define STLM75 							0x49 				// Digital temperature sensor
 #define LPS331 							0x5D 				// MEMS pressure sensor -- WHO_AM_I register
 #define TSL25721						0x39 				// Light to digital converter
-#define HTS221							0xBE 				// Capacitove digital sensor for relative humidity
+#define HTS221							0x5F 				// Capacitove digital sensor for relative humidity
 
 //Pressure define
 #define CTRL_REG1 					0x92  // Power Mode on, 25Hz Pressure Table18 ODR2=1 ODR1&ODR0=0
@@ -33,8 +33,8 @@
 #define COMMAND_AUTO_INC		0b10100000	//
 
 //Humidity define
-#define CONT_REG1_Adress		0x20				// control register1 address
-#define CONT_REG1						0b10000011  // Power mode on, 12,5Hz Table 17			
+#define CONT_REG1_Address		0x20				// control register1 address
+#define CONT_REG1						0x83        // Power mode on, 12,5Hz Table 17			
 #define HUMIDITY_OUT_L			0x28				// out addres data 1B
 #define HUMIDITY_OUT_H			0x29				// out addres data 1B
 #define H0_rH_x2						0x30				// humidity coefficients address 1B

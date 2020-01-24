@@ -10,14 +10,14 @@ void PressureInitialization()
 // Puot [mbar]
 float ReadPressure()
 {
-	uint32_t sum; float Pout;
+	uint32_t sum = 0; float Pout=0.0;
 	
 	I2C0ReadMultRegister(LPS331,PRESS_OUT_XL,1,data);
 	sum = data[0];
 	I2C0ReadMultRegister(LPS331,PRESS_OUT_L,1,data);
-	sum = sum | (uint16_t)(data[0]<<8);
+	sum = sum | (((uint16_t)data[0])<<8);
 	I2C0ReadMultRegister(LPS331,PRESS_OUT_H,1,data);
-	sum = sum | (uint32_t)(data[0]<<16);
+	sum = sum | (((uint32_t)data[0])<<16);
 	Pout = (float)sum/4096;
 	return Pout;
 }
@@ -25,10 +25,10 @@ float ReadPressure()
 //void TemperatureInitialization(){}
 	
 float ReadTemperature()
-{ float Tout=0.0; uint16_t temp;
+{ float Tout=0.0; uint16_t temp=0;
 	
 	I2C0ReadMultRegister(STLM75,TEMP,2,data);
-	temp=data[0]>>5|(data[1]<<3);
+	temp=data[0]>>5|((uint16_t)data[1]<<3);
 	if(temp && ((uint16_t)(1<<8)) ==1) 
 		Tout=(-0.5)*(float)temp;
 	else
@@ -47,10 +47,10 @@ void LightInitialization()
 
 float ReadLight()
 {
-	float Lout=0.0;	uint16_t lightVi; float lux1; float lux2;
+	float Lout=0.0;	uint16_t lightVi=0; float lux1=0.0; float lux2=0.0;
 	
 	I2C0ReadMultRegister(TSL25721,ALS_CH0DATA,2,data);
-	lightVi=data[0] | (uint16_t)(data[0]<<8);
+	lightVi=data[0] | ((uint16_t)data[0]<<8);
 	I2C0ReadMultRegister(TSL25721,ALS_CH1DATA,2,data);
 	uint16_t lightInf=data[0] | (uint16_t)(data[0]<<8);
 	lux1=((float)lightVi-1.87*(float)lightInf)/cpl;
@@ -69,8 +69,8 @@ float ReadLight()
 void HumidityInitialization()
 {
 	data[0]=CONT_REG1;
-	//I2C0WriteMultRegister(HTS221,CONT_REG1_Afdress,1,data);
-	
+	I2C0WriteMultRegister(HTS221,CONT_REG1_Address,1,data);
+
 }
 
 
