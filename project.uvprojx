@@ -427,6 +427,26 @@
               <FileType>5</FileType>
               <FilePath>.\i2c0.h</FilePath>
             </File>
+            <File>
+              <FileName>buttons.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\buttons.c</FilePath>
+            </File>
+            <File>
+              <FileName>buttons.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\buttons.h</FilePath>
+            </File>
+            <File>
+              <FileName>weather_interface.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\weather_interface.h</FilePath>
+            </File>
+            <File>
+              <FileName>weather_interface.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\weather_interface.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

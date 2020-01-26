@@ -1,22 +1,80 @@
 #include "MKL46Z4.h"
-//#include "i2c0.h"
 #include "nucleo.h"
 #include "slcd.h"
+#include "buttons.h"
+#include "weather_interface.h"
+
+void SwitchStateMessage(int state);
 
 int main(void)
 {
-	float pressure;
-	
+	int state = 0;
 	slcdInitialize();
-	I2C0Init(2, 0);
-	
-	//PressureInitialization();
-	//LightInitialization();
-	
-	while(1){
-		//slcdDisplay(20, 10);
-		pressure = ReadTemperature();
-		slcdDisplay((uint16_t)pressure, 10);
-		
+	buttonsInitialize();
+	I2CInitialization();
+
+		while(1){
+			
+			if(!button1Read()){
+				
+					if(state < 4){
+						state++;
+					}
+					else{
+						state = 0;
+					}
+					slcdClear();
+					SwitchStateMessage(state);
+					delay_mc(1000);
+			}
+			delay_mc(10);
+			
+			switch(state){
+				
+				case 0:
+					DisplayTemperature();
+					break;
+				
+				case 1:
+					DisplayPressure();
+					break;
+				
+				case 2:
+					DisplayLight();
+					break;
+				
+				case 3:
+					DisplayHumidity();
+					break;
+				
+				default:
+					break;
+			}
 	}
+
+}
+
+void SwitchStateMessage(int state){
+
+		switch(state){
+				
+				case 0:
+					TemperatureMessage();
+					break;
+				
+				case 1:
+					PressureMessage();
+					break;
+				
+				case 2:
+					LightMessage();
+					break;
+				
+				case 3:
+					HumidityMessage();
+					break;
+				
+				default:
+					break;
+			}
 }
