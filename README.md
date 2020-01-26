@@ -3,12 +3,13 @@
 # Opis projektu
 
 Celem projektu jest stworzenie stacji pogodowej pozwalającej na pomiar temperatury, ciśnienia atmosferycznego, wilgotności oraz natężenia światła.
-Urządzeniem, które dokonuje pomiarów jest układ KA-Nucleo-Weather. Z kolei za przetewarzanie danych odpowiada mikrokontroler FRDM-KL25Z.
-Wyniki będą przekazywane na płytkę przy pomocy protokołu I2C oraz prezentowane na komputerze poprzez aplikację stworzoną w LabView.
+Urządzeniem, które dokonuje pomiarów jest układ KA-Nucleo-Weather. Z kolei za przetewarzanie danych odpowiada mikrokontroler FRDM-KL46Z.
+Wyniki będą przentowane na wbudowanym wyświetlaczu 7-segmentowym LCD.
 
-## Przewidywana funkcjonalność:
+## Funkcjonalność:
 
-- pomiar temperatury, ciśnienia oraz wilgotności
-- pomiar oświetlenia
-- wyświetlanie wykresów zmian parametrów w czasie
-- zapis wyników pomiarów do pliku CSV
+- pomiar temperatury, ciśnienia, wilgotności i oświetlenia
+- prezentacja wyników na wyświetlaczu LCD
+- wyświetlana wielkość fizyczna zmieniana za pomocą przycisku
+- wartość jest poprzedzona przez literę informującą o tym, który pomiar zostanie wyświetlony
+ (T - temperatura, P - ciśnienie, L - światło, H - wilgotność)
