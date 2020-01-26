@@ -9,6 +9,7 @@ Wyniki będą przentowane na wbudowanym wyświetlaczu 7-segmentowym LCD.
 ## Funkcjonalność:
 
 - pomiar temperatury, ciśnienia, wilgotności i oświetlenia
+- komunikacja przy pomocy protokołu I2C
 - prezentacja wyników na wyświetlaczu LCD
 - wyświetlana wielkość fizyczna zmieniana za pomocą przycisku
 - wartość jest poprzedzona przez literę informującą o tym, który pomiar zostanie wyświetlony
