@@ -16,7 +16,7 @@ void i2c_start()
 	PORTC->PCR[1] = PORT_PCR_MUX(2);  
 	PORTC->PCR[2] = PORT_PCR_MUX(2);  
 	
-	//	I2C baud rate = bus speed (Hz)/(mul × SCL divider)
+	//	I2C baud rate = bus speed (Hz)/(mul Ã— SCL divider)
 	//	bus speed (Hz) = 21000000000
 	//	ICR = 14 => SCL = 56		mul = 4
 	//	set to 93,75k baud
@@ -55,6 +55,7 @@ void i2c_read_setup(uint8_t dev, uint8_t address)
 
 
 //////////funcs for reading and writing a single byte
+
 //using 7bit addressing reads a byte from dev:address
 uint8_t i2c_read_byte(uint8_t dev, uint8_t address)
 {
@@ -85,7 +86,6 @@ uint8_t i2c_read_byte(uint8_t dev, uint8_t address)
 
 
 //using 7bit addressing writes a byte data to dev:address
-#pragma no_inline 
 void i2c_write_byte(uint8_t dev, uint8_t address, uint8_t data)
 {
 	
